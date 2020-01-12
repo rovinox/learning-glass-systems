@@ -9,7 +9,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -20,6 +19,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TableTopLightboard from "./TableTopLightboard"
 import Home from "./Home"
 import StandAloneLightboard from "./StandAloneLightboard"
+import ContactUs from "./ContactUs"
 
 
 
@@ -162,7 +162,9 @@ export default function Dashboard(props) {
    setPage("standalonelightboard")
    handlStudioeClose()
  }
- 
+  const handleContactPage =() => {
+    setPage("contactus")
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -180,9 +182,9 @@ export default function Dashboard(props) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             LEARNING GLASS
           </Typography>
-          <Button>About Us</Button>
+          <Button >About Us</Button>
           <Button>Resources</Button>
-          <Button>Contact Us</Button>
+          <Button onClick={handleContactPage}>Contact Us</Button>
          
         </Toolbar>
       </AppBar>
@@ -253,6 +255,8 @@ export default function Dashboard(props) {
           {page === "home" ? <Home/> : null}
           {page=== "tabletoplightboard" ? <TableTopLightboard/>: null}
           {page=== "standalonelightboard" ? <StandAloneLightboard/>: null}
+          {page === "contactus" ? <ContactUs/>: null}
+          <Divider variant="middle" />
           <Box pt={4}>
             <Copyright />
           </Box>

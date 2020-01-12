@@ -5,15 +5,19 @@ import Picture1 from "./pictures/S66 Standalone Lightboard Studio Package.jpg"
 import Picture2 from "./pictures/S33A Table Top Lightboard System.jpg"
 import Picture3 from "./pictures/S33 Table Top Lightboard Studio Package.jpg"
 import Picture4 from "./pictures/S66 Standalone Lightboard System.jpg"
+import Container from '@material-ui/core/Container';
+
 export default class Home extends Component {
     render() {
         return (
-            <div>
+            <Container maxWidth="lg">
+
+            
                 <Carousel
                  autoPlay={true}
                  infiniteLoop={true}
                  interval={3000}
-                 width="40vw"
+                 width="50vw"
                  transitionTime={500}
                  >
                 <div>
@@ -33,7 +37,8 @@ export default class Home extends Component {
                     <p className="legend">Legend 3</p>
                 </div>
             </Carousel>
-            </div>
+        
+            </Container>
         )
     }
 }
