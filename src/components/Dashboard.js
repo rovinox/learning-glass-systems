@@ -8,7 +8,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -117,10 +116,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [studio, setStudio] = React.useState(null);
+  const [lightbord, setLightboard] = React.useState(null);
+  const [Accessories, setAccessories] = React.useState(null);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -128,13 +131,25 @@ export default function Dashboard() {
     setOpen(false);
   };
   // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  const handleStudioClick = event => {
+    setStudio(event.currentTarget);
+  };
+  const handlStudioeClose = () => {
+    setStudio(null);
+  };
+  const handleLightboradClick = event => {
+    setLightboard(event.currentTarget);
+  };
+  const handlLightboardClose = () => {
+    setLightboard(null);
+  };
+  const handleAccessoricsClick = event => {
+    setAccessories(event.currentTarget);
+  };
+  const handlAccessoricsClose = () => {
+    setAccessories(null);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -171,22 +186,54 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Open Menu
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleStudioClick}>
+        Studio Packages
       </Button>
       <Menu
         id="simple-menu"
-        anchorEl={anchorEl}
+        anchorEl={studio}
         keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
+        open={Boolean(studio)}
+        onClose={handlStudioeClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handlStudioeClose}>S33 Table Top Lightboard Studio Package</MenuItem>
+        <MenuItem onClick={handlStudioeClose}>S66 Standalone Lightboard Studio Package</MenuItem>
       </Menu>
-        <Divider />
+      <Divider />
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleLightboradClick}>
+        Lightboard Glass Model
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={lightbord}
+        keepMounted
+        open={Boolean(lightbord)}
+        onClose={handlLightboardClose}
+      >
+        <MenuItem onClick={handlLightboardClose}>S33A Table Top Lightboard System</MenuItem>
+        <MenuItem onClick={handlLightboardClose}>S66A Lightboard System</MenuItem>
+        <MenuItem onClick={handlLightboardClose}>S66 Standalone Lightboard System</MenuItem>
+      </Menu>
+      <Divider/>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleAccessoricsClick}>
+      Accessories
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={Accessories}
+        keepMounted
+        open={Boolean(Accessories)}
+        onClose={handlAccessoricsClose}
+      >
+        <MenuItem onClick={handlAccessoricsClose}>Dracast LED500 Bicolor LED Light</MenuItem>
+        <MenuItem onClick={handlAccessoricsClose}>Neon Dry Erase Markers</MenuItem>
+        <MenuItem onClick={handlAccessoricsClose}>Decimator In-line video flipping device for live-streaming</MenuItem>
+        <MenuItem onClick={handlAccessoricsClose}>Neon Dry Erase Markers</MenuItem>
+      </Menu>
+      <Divider/>
       </Drawer>
+
+    
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
