@@ -17,6 +17,9 @@ import Typography from "@material-ui/core/Typography"
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import TableTopLightboard from "./TableTopLightboard"
+import Home from "./Home"
+import StandAloneLightboard from "./StandAloneLightboard"
 
 
 
@@ -118,12 +121,13 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [studio, setStudio] = React.useState(null);
   const [lightbord, setLightboard] = React.useState(null);
   const [Accessories, setAccessories] = React.useState(null);
+  const [page, setPage] = React.useState("home");
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -136,6 +140,7 @@ export default function Dashboard() {
   };
   const handlStudioeClose = () => {
     setStudio(null);
+    
   };
   const handleLightboradClick = event => {
     setLightboard(event.currentTarget);
@@ -149,7 +154,15 @@ export default function Dashboard() {
   const handlAccessoricsClose = () => {
     setAccessories(null);
   };
-
+  const changrTableTopLightBoradpage = () =>{
+    setPage("tabletoplightboard")
+    handlStudioeClose()
+  }
+ const changeStandAloneLightboardPage = () =>{
+   setPage("standalonelightboard")
+   handlStudioeClose()
+ }
+ 
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -167,9 +180,9 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             LEARNING GLASS
           </Typography>
-          <Button>hello</Button>
-          <Button>hello</Button>
-          <Button>hello</Button>
+          <Button>About Us</Button>
+          <Button>Resources</Button>
+          <Button>Contact Us</Button>
          
         </Toolbar>
       </AppBar>
@@ -196,8 +209,8 @@ export default function Dashboard() {
         open={Boolean(studio)}
         onClose={handlStudioeClose}
       >
-        <MenuItem onClick={handlStudioeClose}>S33 Table Top Lightboard Studio Package</MenuItem>
-        <MenuItem onClick={handlStudioeClose}>S66 Standalone Lightboard Studio Package</MenuItem>
+        <MenuItem onClick={changrTableTopLightBoradpage}>S33 Table Top Lightboard Studio Package</MenuItem>
+        <MenuItem onClick={changeStandAloneLightboardPage}>S66 Standalone Lightboard Studio Package</MenuItem>
       </Menu>
       <Divider />
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleLightboradClick}>
@@ -237,10 +250,9 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-           {/* main content goes here */}
-            {/* main content goes here */}
-          </Grid>
+          {page === "home" ? <Home/> : null}
+          {page=== "tabletoplightboard" ? <TableTopLightboard/>: null}
+          {page=== "standalonelightboard" ? <StandAloneLightboard/>: null}
           <Box pt={4}>
             <Copyright />
           </Box>
