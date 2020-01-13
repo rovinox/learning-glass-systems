@@ -1,300 +1,176 @@
 import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
+import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Typography from "@material-ui/core/Typography"
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import TableTopLightboard from "./TableTopLightboard"
-import Home from "./Home"
-import StandAloneLightboard from "./StandAloneLightboard"
-import ContactUs from "./ContactUs"
-import FAQ from "./FAQ"
-import HowToGuide from "./HowToGuide"
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const drawerWidth = 200;
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    // width: `calc(100% - ${drawerWidth}px)`,
-    width:"100%",
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
-  title: {
-    flexGrow: 1,
-    color: "red"
-  },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
+  drawer: {
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
+      width: drawerWidth,
+      flexShrink: 0,
     },
   },
-  appBarSpacer: theme.mixins.toolbar,
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+  },
   content: {
     flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  fixedHeight: {
-    height: 240,
+    padding: theme.spacing(3),
   },
 }));
 
-
-
-export default function Dashboard(props) {
+function ResponsiveDrawer(props) {
+  const { container } = props;
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const [studio, setStudio] = React.useState(null);
-  const [lightbord, setLightboard] = React.useState(null);
-  const [Accessories, setAccessories] = React.useState(null);
-  const [resources, setResources] = React.useState(null);
-  const [page, setPage] = React.useState("home");
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  const handleStudioClick = event => {
-    setStudio(event.currentTarget);
-  };
-  const handlStudioeClose = () => {
-    setStudio(null);
-    
-  };
-  const handleLightboradClick = event => {
-    setLightboard(event.currentTarget);
-  };
-  const handlLightboardClose = () => {
-    setLightboard(null);
-  };
-  const handleAccessoricsClick = event => {
-    setAccessories(event.currentTarget);
-  };
-  const handlAccessoricsClose = () => {
-    setAccessories(null);
-  };
-  const handleResourcesClick = event => {
-    setResources(event.currentTarget);
-  };
-  const handlResourcesClose = () => {
-    setResources(null);
-    
-  };
-  const changrTableTopLightBoradpage = () =>{
-    setPage("tabletoplightboard")
-    handlStudioeClose()
-  }
- const changeStandAloneLightboardPage = () =>{
-   setPage("standalonelightboard")
-   handlStudioeClose()
- }
-  const handleContactPage =() => {
-    setPage("contactus")
-  }
-  const changeHowToGuidePage = () =>{
-    setPage("howtoguide")
-    handlResourcesClose()
-  }
-  const changeFAQPage = () =>{
-    setPage("faq")
-    handlResourcesClose()
-  }
+  const drawer = (
+    <div>
+      <div className={classes.toolbar} />
+      <Divider />
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
           <IconButton
-            edge="start"
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
           >
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            LEARNING GLASS
+          <Typography variant="h6" noWrap>
+            Responsive drawer
           </Typography>
-          <Button >About Us</Button>
-          <Button onClick={handleResourcesClick}>
-        Resources
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={resources}
-        keepMounted
-        open={Boolean(resources)}
-        onClose={handlResourcesClose}
-      >
-        <MenuItem onClick={changeHowToGuidePage}>How to guide(</MenuItem>
-        <MenuItem onClick={changeFAQPage}>FAQ</MenuItem>
-      </Menu>
-          <Button onClick={handleContactPage}>Contact Us</Button>
-         
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleStudioClick}>
-        Studio Packages
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={studio}
-        keepMounted
-        open={Boolean(studio)}
-        onClose={handlStudioeClose}
-      >
-        <MenuItem onClick={changrTableTopLightBoradpage}>S33 Table Top Lightboard Studio Package</MenuItem>
-        <MenuItem onClick={changeStandAloneLightboardPage}>S66 Standalone Lightboard Studio Package</MenuItem>
-      </Menu>
-      <Divider />
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleLightboradClick}>
-        Lightboard Glass Model
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={lightbord}
-        keepMounted
-        open={Boolean(lightbord)}
-        onClose={handlLightboardClose}
-      >
-        <MenuItem onClick={handlLightboardClose}>S33A Table Top Lightboard System</MenuItem>
-        <MenuItem onClick={handlLightboardClose}>S66A Lightboard System</MenuItem>
-        <MenuItem onClick={handlLightboardClose}>S66 Standalone Lightboard System</MenuItem>
-      </Menu>
-      <Divider/>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleAccessoricsClick}>
-      Accessories
-      </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={Accessories}
-        keepMounted
-        open={Boolean(Accessories)}
-        onClose={handlAccessoricsClose}
-      >
-        <MenuItem onClick={handlAccessoricsClose}>Dracast LED500 Bicolor LED Light</MenuItem>
-        <MenuItem onClick={handlAccessoricsClose}>Neon Dry Erase Markers</MenuItem>
-        <MenuItem onClick={handlAccessoricsClose}>Decimator In-line video flipping device for live-streaming</MenuItem>
-        <MenuItem onClick={handlAccessoricsClose}>Neon Dry Erase Markers</MenuItem>
-      </Menu>
-      <Divider/>
-      </Drawer>
-
-    
+      <nav className={classes.drawer} aria-label="mailbox folders">
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="css">
+          <Drawer
+            container={container}
+            variant="temporary"
+            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="css">
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            variant="permanent"
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          {page === "home" ? <Home/> : null}
-          {page === "tabletoplightboard" ? <TableTopLightboard/>: null}
-          {page === "standalonelightboard" ? <StandAloneLightboard/>: null}
-          {page === "contactus" ? <ContactUs/>: null}
-          {page === "howtoguide" ? <HowToGuide/> : null}
-          {page === "faq" ? <FAQ/> : null}
-          <Divider variant="middle" />
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container>
+        <div className={classes.toolbar} />
+        <Typography paragraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+          donec massa sapien faucibus et molestie ac.
+        </Typography>
+        <Typography paragraph>
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
+          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
+          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
+          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
+          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
+          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
+          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
+          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
       </main>
     </div>
   );
 }
+
+ResponsiveDrawer.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  container: PropTypes.instanceOf(typeof Element === 'undefined' ? Object : Element),
+};
+
+export default ResponsiveDrawer;
