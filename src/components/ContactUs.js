@@ -4,7 +4,7 @@ export default class ContactUs extends Component {
     render() {
         return (
             <Container maxWidth="md">
-                ContactUs
+                <h1>ContactUs</h1>
             </Container>
         )
     }

@@ -20,6 +20,8 @@ import TableTopLightboard from "./TableTopLightboard"
 import Home from "./Home"
 import StandAloneLightboard from "./StandAloneLightboard"
 import ContactUs from "./ContactUs"
+import FAQ from "./FAQ"
+import HowToGuide from "./HowToGuide"
 
 
 
@@ -37,7 +39,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -62,7 +64,8 @@ const useStyles = makeStyles(theme => ({
   },
   appBarShift: {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    // width: `calc(100% - ${drawerWidth}px)`,
+    width:"100%",
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -127,6 +130,7 @@ export default function Dashboard(props) {
   const [studio, setStudio] = React.useState(null);
   const [lightbord, setLightboard] = React.useState(null);
   const [Accessories, setAccessories] = React.useState(null);
+  const [resources, setResources] = React.useState(null);
   const [page, setPage] = React.useState("home");
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -134,7 +138,7 @@ export default function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
   const handleStudioClick = event => {
     setStudio(event.currentTarget);
   };
@@ -154,6 +158,13 @@ export default function Dashboard(props) {
   const handlAccessoricsClose = () => {
     setAccessories(null);
   };
+  const handleResourcesClick = event => {
+    setResources(event.currentTarget);
+  };
+  const handlResourcesClose = () => {
+    setResources(null);
+    
+  };
   const changrTableTopLightBoradpage = () =>{
     setPage("tabletoplightboard")
     handlStudioeClose()
@@ -164,6 +175,14 @@ export default function Dashboard(props) {
  }
   const handleContactPage =() => {
     setPage("contactus")
+  }
+  const changeHowToGuidePage = () =>{
+    setPage("howtoguide")
+    handlResourcesClose()
+  }
+  const changeFAQPage = () =>{
+    setPage("faq")
+    handlResourcesClose()
   }
   return (
     <div className={classes.root}>
@@ -183,7 +202,19 @@ export default function Dashboard(props) {
             LEARNING GLASS
           </Typography>
           <Button >About Us</Button>
-          <Button>Resources</Button>
+          <Button onClick={handleResourcesClick}>
+        Resources
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={resources}
+        keepMounted
+        open={Boolean(resources)}
+        onClose={handlResourcesClose}
+      >
+        <MenuItem onClick={changeHowToGuidePage}>How to guide(</MenuItem>
+        <MenuItem onClick={changeFAQPage}>FAQ</MenuItem>
+      </Menu>
           <Button onClick={handleContactPage}>Contact Us</Button>
          
         </Toolbar>
@@ -253,9 +284,11 @@ export default function Dashboard(props) {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           {page === "home" ? <Home/> : null}
-          {page=== "tabletoplightboard" ? <TableTopLightboard/>: null}
-          {page=== "standalonelightboard" ? <StandAloneLightboard/>: null}
+          {page === "tabletoplightboard" ? <TableTopLightboard/>: null}
+          {page === "standalonelightboard" ? <StandAloneLightboard/>: null}
           {page === "contactus" ? <ContactUs/>: null}
+          {page === "howtoguide" ? <HowToGuide/> : null}
+          {page === "faq" ? <FAQ/> : null}
           <Divider variant="middle" />
           <Box pt={4}>
             <Copyright />
