@@ -23,9 +23,13 @@ import ContactUs from "./ContactUs"
 import FAQ from "./Resource/FAQ"
 import HowToGuide from "./Resource/HowToGuide"
 import AboutUs from "./AboutUs"
-
-
-
+import LightboardSystem from "../components/LightboardGlassModel/LightboardSystem"
+import StandaloneLightboardSystem from "../components/LightboardGlassModel/StandaloneLightboardSystem"
+import TableTopLightboardSystem from "../components/LightboardGlassModel/TopLightboardSystem"
+import BlackMagic from "../components/Accessories/BlackMagic"
+import DracastLEDLight from "../components/Accessories/DracastLEDLight"
+import EraseMarkers from "../components/Accessories/EraseMarkers"
+import Decimator from "../components/Accessories/Decimator"
 
 function Copyright() {
   return (
@@ -88,7 +92,7 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [page, setPage] = React.useState("home");
+  const [page, setPage] = React.useState("faq");
   const [resources, setResources] = React.useState(null);
 
   const handleResourcesClick = event => {
@@ -124,9 +128,39 @@ function ResponsiveDrawer(props) {
   const changeFAQPage = () =>{
     setPage("faq")
    }
+
    const changeAboutUsPage = () =>{
      setPage("aboutus")
    }
+
+   const changeTableTopLightboardSystemPage = () => {
+      setPage("TableTopLightboardSystem")
+   }
+   
+   const changeLightboardSystemPage = () => {
+      setPage("LightboardSystem")
+   }
+
+   const changeStandaloneLightboardSystemPage = () => {
+      setPage("StandaloneLightboardSystem")
+   }
+
+   const changeBlackMagicPage = () => {
+     setPage("changeBlackMagicPage")
+   }
+
+   const changeDracastLEDLightPage = () => {
+     setPage("changeDracastLEDLightPage")
+   }
+
+   const changeEraseMarkersPage = () => {
+    setPage("changeEraseMarkersPage")
+   }
+
+   const changeDecimatorPage = () => {
+    setPage("changeDecimatorPage")
+   }
+
 
   const drawer = (
     <div>
@@ -134,7 +168,13 @@ function ResponsiveDrawer(props) {
       <VerticalList
       changrTableTopLightBoradpage={changrTableTopLightBoradpage}
       changeStandAloneLightboardPage={changeStandAloneLightboardPage}
-       
+      changeTableTopLightboardSystemPage={changeTableTopLightboardSystemPage} 
+      changeLightboardSystemPage={changeLightboardSystemPage}
+      changeStandaloneLightboardSystemPage={changeStandaloneLightboardSystemPage}
+      changeBlackMagicPage={changeBlackMagicPage}
+      changeDracastLEDLightPage={changeDracastLEDLightPage}
+      changeEraseMarkersPage={changeEraseMarkersPage}
+      changeDecimatorPage={changeDecimatorPage}
       />
     </div>
   );
@@ -217,7 +257,14 @@ function ResponsiveDrawer(props) {
           {page === "howtoguide" ? <HowToGuide /> : null}
           {page === "faq" ? <FAQ /> : null}
           {page === "aboutus" ? <AboutUs/> : null}
-
+          {page === "TableTopLightboardSystem" ? <TableTopLightboardSystem/> : null}
+          {page === "LightboardSystem" ? <LightboardSystem/> : null}
+          {page === "StandaloneLightboardSystem" ? <StandaloneLightboardSystem/> : null}
+          {page === "changeBlackMagicPage" ? <BlackMagic /> : null}
+          {page === "changeDracastLEDLightPage" ? <DracastLEDLight /> : null}
+          {page === "changeEraseMarkersPage" ? <EraseMarkers /> : null}
+          {page === "changeDecimatorPage" ? <Decimator /> : null}
+            
           <Divider variant="middle" color="primary" />
           <Box pt={4}>
             <Copyright />

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
@@ -62,9 +62,9 @@ export default function VerticalList (props) {
                     keepMounted
                     open={Boolean(lightbord)}
                     onClose={handlLightboardClose}>
-                    <MenuItem  >S33A Table Top Lightboard System</MenuItem>
-                    <MenuItem  >S66A Lightboard System</MenuItem>
-                    <MenuItem  >S66 Standalone Lightboard System</MenuItem>
+                    <MenuItem onClick={() =>{props.changeTableTopLightboardSystemPage(handlLightboardClose())}} >S33A Table Top Lightboard System</MenuItem>
+                    <MenuItem onClick={() =>{props.changeLightboardSystemPage(handlLightboardClose())}} >S66A Lightboard System</MenuItem>
+                    <MenuItem onClick={() =>{props.changeStandaloneLightboardSystemPage(handlLightboardClose())}} >S66 Standalone Lightboard System</MenuItem>
                     </Menu>
                     <Divider/>
                     </ListItem>
@@ -78,10 +78,10 @@ export default function VerticalList (props) {
                     keepMounted
                     open={Boolean(Accessories)}
                     onClose={handlAccessoricsClose}>
-                    <MenuItem >Dracast LED500 Bicolor LED Light</MenuItem>
-                    <MenuItem >Neon Dry Erase Markers</MenuItem>
-                    <MenuItem >Decimator In-line video flipping device for live-streaming</MenuItem>
-                    <MenuItem >BlackMagic Mini-recorder for streaming or inserting images in real-time</MenuItem>
+                    <MenuItem onClick={() =>{props.changeDracastLEDLightPage(handlAccessoricsClose())}} >Dracast LED500 Bicolor LED Light</MenuItem>
+                    <MenuItem onClick={() =>{props.changeEraseMarkersPage(handlAccessoricsClose())}} >Neon Dry Erase Markers</MenuItem>
+                    <MenuItem onClick={() =>{props.changeDecimatorPage(handlAccessoricsClose())}} >Decimator In-line video flipping device for live-streaming</MenuItem>
+                    <MenuItem onClick={() =>{props.changeBlackMagicPage(handlAccessoricsClose())}} >BlackMagic Mini-recorder for streaming or inserting images in real-time</MenuItem>
                     </Menu>
                     </ListItem>
                 </List>
