@@ -47,8 +47,8 @@ export default function VerticalList (props) {
                     keepMounted
                     open={Boolean(studio)}
                     onClose={handlStudioeClose}>
-                    <MenuItem onClick={() =>{props.changrTableTopLightBoradpage(handlStudioeClose())}} >S33 Table Top Lightboard Studio Package</MenuItem>
-                    <MenuItem >S66 Standalone Lightboard Studio Package</MenuItem>
+                    <MenuItem onClick={ () =>{props.changrTableTopLightBoradpage(handlStudioeClose())}} >S33 Table Top Lightboard Studio Package</MenuItem>
+                    <MenuItem onClick={ () =>{props.changeStandAloneLightboardPage(handlStudioeClose())}} >S66 Standalone Lightboard Studio Package</MenuItem>
                     </Menu>
                     <Divider /> 
                      </ListItem>
@@ -81,7 +81,7 @@ export default function VerticalList (props) {
                     <MenuItem >Dracast LED500 Bicolor LED Light</MenuItem>
                     <MenuItem >Neon Dry Erase Markers</MenuItem>
                     <MenuItem >Decimator In-line video flipping device for live-streaming</MenuItem>
-                    <MenuItem >Neon Dry Erase Markers</MenuItem>
+                    <MenuItem >BlackMagic Mini-recorder for streaming or inserting images in real-time</MenuItem>
                     </Menu>
                     </ListItem>
                 </List>

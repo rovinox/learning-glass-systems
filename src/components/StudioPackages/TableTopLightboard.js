@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class StandAloneLightboard extends Component {
+export default class TableTopLightboard extends Component {
     render() {
         return (
             <div>
-                S66 Standalone Lightboard Studio 
+               <h1>Table Top Lightboard System</h1>
             </div>
         )
     }

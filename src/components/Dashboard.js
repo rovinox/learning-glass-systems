@@ -10,14 +10,35 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import VerticalList from "./VerticalList"
-import TableTopLightboard from "./TableTopLightboard"
+import TableTopLightboard from "./StudioPackages/TableTopLightboard"
 import Home from "./Home"
-import StandAloneLightboard from "./StandAloneLightboard"
+import StandAloneLightboard from "./StudioPackages/StandAloneLightboard"
 import ContactUs from "./ContactUs"
-import FAQ from "./FAQ"
-import HowToGuide from "./HowToGuide"
+import FAQ from "./Resource/FAQ"
+import HowToGuide from "./Resource/HowToGuide"
+import AboutUs from "./AboutUs"
+
+
+
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const drawerWidth = 240;
 
@@ -51,11 +72,15 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  NavItems: {
-    display:"flex",
-    justifyContent:"flex-end"
-
+  Resources: {
+    marginRight:"70px",
+    marginLeft:"70px"
+  },
+  resourcesBackground:{
+    backgroundColor:"teal"
   }
+
+  
 }));
 
 function ResponsiveDrawer(props) {
@@ -64,6 +89,15 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [page, setPage] = React.useState("home");
+  const [open, setOpen] = React.useState(null);
+
+  const handleOpen = event => {
+    setOpen(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setOpen(null);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -85,14 +119,14 @@ function ResponsiveDrawer(props) {
 
   const changeHowToGuidePage = () =>{
     setPage("howtoguide")
-    
-  }
+    }
 
   const changeFAQPage = () =>{
     setPage("faq")
-   
-  }
-
+   }
+   const changeAboutUsPage = () =>{
+     setPage("aboutus")
+   }
 
   const drawer = (
     <div>
@@ -100,6 +134,7 @@ function ResponsiveDrawer(props) {
       <VerticalList
       changrTableTopLightBoradpage={changrTableTopLightBoradpage}
       changeStandAloneLightboardPage={changeStandAloneLightboardPage}
+       
       />
     </div>
   );
@@ -118,12 +153,28 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.NavItems}>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Login</Button>
+          
+
+          <Button onClick={changeAboutUsPage} color="inherit">About Us</Button>
+          
+
+          <Button className={classes.Resources} color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
+           Resources
+         </Button>
+          <Menu
+          id="simple-menu"
+          anchorEl={open}
+          keepMounted
+          open={Boolean(open)}
+          onClose={handleClose}>
+          <MenuItem onClick={() =>{handleClose(changeHowToGuidePage())}}>How to guide</MenuItem>
+          <MenuItem onClick={() =>{handleClose(changeFAQPage())}}>FAQ</MenuItem>
+          </Menu>
+
+          <Button onClick={handleContactPage} color="inherit">Contact Us</Button>
        
-          </Typography>
+          
+          
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
@@ -165,7 +216,12 @@ function ResponsiveDrawer(props) {
           {page === "contactus" ? <ContactUs />: null}
           {page === "howtoguide" ? <HowToGuide /> : null}
           {page === "faq" ? <FAQ /> : null}
-          
+          {page === "aboutus" ? <AboutUs/> : null}
+
+          <Divider variant="middle" />
+          <Box pt={4}>
+            <Copyright />
+          </Box>
       </main>
     </div>
   );
