@@ -89,14 +89,14 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [page, setPage] = React.useState("home");
-  const [open, setOpen] = React.useState(null);
+  const [resources, setResources] = React.useState(null);
 
-  const handleOpen = event => {
-    setOpen(event.currentTarget);
+  const handleResourcesClick = event => {
+    setResources(event.currentTarget);
   };
-
-  const handleClose = () => {
-    setOpen(null);
+  const handlResourcesClose = () => {
+    setResources(null);
+    
   };
 
   const handleDrawerToggle = () => {
@@ -158,17 +158,17 @@ function ResponsiveDrawer(props) {
           <Button onClick={changeAboutUsPage} color="inherit">About Us</Button>
           
 
-          <Button className={classes.Resources} color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpen}>
+          <Button className={classes.Resources} color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleResourcesClick}>
            Resources
          </Button>
           <Menu
           id="simple-menu"
-          anchorEl={open}
+          anchorEl={resources}
           keepMounted
-          open={Boolean(open)}
-          onClose={handleClose}>
-          <MenuItem onClick={() =>{handleClose(changeHowToGuidePage())}}>How to guide</MenuItem>
-          <MenuItem onClick={() =>{handleClose(changeFAQPage())}}>FAQ</MenuItem>
+          open={Boolean(resources)}
+          onClose={handlResourcesClose}>
+          <MenuItem onClick={() =>{handlResourcesClose(changeHowToGuidePage())}}>How to guide</MenuItem>
+          <MenuItem onClick={() =>{handlResourcesClose(changeFAQPage())}}>FAQ</MenuItem>
           </Menu>
 
           <Button onClick={handleContactPage} color="inherit">Contact Us</Button>
@@ -218,7 +218,7 @@ function ResponsiveDrawer(props) {
           {page === "faq" ? <FAQ /> : null}
           {page === "aboutus" ? <AboutUs/> : null}
 
-          <Divider variant="middle" />
+          <Divider variant="middle" color="primary" />
           <Box pt={4}>
             <Copyright />
           </Box>
