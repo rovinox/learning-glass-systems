@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import Picture1 from "./pictures/S66 Standalone Lightboard Studio Package.jpg"
@@ -7,18 +7,18 @@ import Picture3 from "./pictures/S33 Table Top Lightboard Studio Package.jpg"
 import Picture4 from "./pictures/S66 Standalone Lightboard System.jpg"
 import Container from '@material-ui/core/Container';
 
-export default class Home extends Component {
-    render() {
+export default function Home () {
+    
         return (
-            <Container maxWidth="lg">
-
-            
+           
+                <div style={{display:"flex", justifyContent:"center"}} >
+                    
                 <Carousel
                  autoPlay={true}
                  infiniteLoop={true}
                  interval={3000}
                  width="50vw"
-                 transitionTime={500}
+                 transitionTime={300}
                  >
                 <div>
                     <img src={Picture1} />
@@ -37,8 +37,10 @@ export default class Home extends Component {
                     <p className="legend">Legend 3</p>
                 </div>
             </Carousel>
+                </div>
+            
         
-            </Container>
+            
         )
-    }
+    
 }

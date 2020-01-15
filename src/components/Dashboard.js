@@ -92,7 +92,7 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [page, setPage] = React.useState("faq");
+  const [page, setPage] = React.useState("home");
   const [resources, setResources] = React.useState(null);
 
   const handleResourcesClick = event => {

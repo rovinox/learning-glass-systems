@@ -2,3 +2,12 @@
     display: flex;
     justify-content: flex-end;
 }
+.thumbs-wrapper {
+    display: none;
+}
+
+.pic {
+    
+    width: 950px;
+    height: 800px;
+}
