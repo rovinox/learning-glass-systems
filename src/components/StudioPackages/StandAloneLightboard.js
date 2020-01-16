@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class StandAloneLightboard extends Component {
-    render() {
+export default function StandAloneLightboard (){
+    
         return (
-            <div>
-                <h1>S66 Standalone Lightboard Studio</h1>
+            <div className="test">
+                
+                <h1 style={{textAlign:"center", marginTop:"10px"}}>S66 Standalone Lightboard Studio</h1>
             </div>
         )
-    }
+    
 }

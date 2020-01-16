@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class HowToGuide extends Component {
-    render() {
+export default function HowToGuide () {
+    
         return (
             <div>
                 <h1> how to guide</h1>
                 
             </div>
         )
-    }
 }
+

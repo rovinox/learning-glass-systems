@@ -7,7 +7,8 @@
 }
 
 .pic {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
     
-    width: 950px;
-    height: 800px;
 }

@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import Picture1 from "./pictures/S66 Standalone Lightboard Studio Package.jpg"
 import Picture2 from "./pictures/S33A Table Top Lightboard System.jpg"
-import Picture3 from "./pictures/S33 Table Top Lightboard Studio Package.jpg"
+import Picture3 from "./pictures/S66 Standalone Lightboard Studio Package.jpg"
 import Picture4 from "./pictures/S66 Standalone Lightboard System.jpg"
 import Container from '@material-ui/core/Container';
 
