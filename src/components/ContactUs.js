@@ -27,8 +27,8 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function ContactUs() {
-   
+export default function ContactUs(props) {
+    // const {handleContactPage} = props;
     const classes = useStyles();
     const [fullName, setFullName] = React.useState("")
     const [email, setEmail] = React.useState("")
@@ -82,6 +82,7 @@ export default function ContactUs() {
             handleFail()
         } else {
             handleSuccess()
+            props.handleContactPage()
              }
     }   
 
