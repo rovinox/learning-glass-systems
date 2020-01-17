@@ -1,5 +1,4 @@
 import React from 'react'
-import Container from "@material-ui/core/Container"
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -79,13 +78,14 @@ export default function ContactUs(props) {
     const submitInfo = (e) => {
         e.preventDefault()
         if(!fullName|| !email || !message) {
-            handleFail()
+          handleFail()
+          
         } else {
-            handleSuccess()
-            props.handleContactPage()
-             }
-    }   
-
+          handleSuccess()
+          setTimeout(()=>{props.backToHome()},3000)
+     }
+  }   
+    
         return (
             
             <div>

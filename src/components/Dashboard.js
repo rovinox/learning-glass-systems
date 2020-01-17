@@ -107,6 +107,10 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const backToHome = () =>{
+    setPage("home")
+  }
+
   const changrTableTopLightBoradpage = () =>{
     setPage("tabletoplightboard")
     
@@ -253,7 +257,7 @@ function ResponsiveDrawer(props) {
           {page === "home" ? <Home/> : null}
           {page === "tabletoplightboard" ? <TableTopLightboard /> : null}
           {page === "standalonelightboard" ? <StandAloneLightboard  />: null}
-        {page === "contactus" ? <ContactUs handleContactPage={handleContactPage} />: null}
+        {page === "contactus" ? <ContactUs backToHome={backToHome} />: null}
           {page === "howtoguide" ? <HowToGuide /> : null}
           {page === "faq" ? <FAQ /> : null}
           {page === "aboutus" ? <AboutUs /> : null}
