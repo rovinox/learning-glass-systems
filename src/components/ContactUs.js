@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import Card from "@material-ui/core/Card"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,8 +19,9 @@ const useStyles = makeStyles(theme => ({
         width: "400px",
         marginTop:"20px"
     },
-    botton:{
-        marginTop:"30px"
+    btn:{
+        marginTop:"30px",
+        marginBottom:"30px"
     }
     
   }));
@@ -99,6 +101,7 @@ export default function ContactUs(props) {
                    Please fill out all the fields
                   </Alert>
                 </Snackbar>
+                <Card></Card>
                 <form className={classes.root} onSubmit={submitInfo} >
                     <TextField
                     onChange={handleName}
@@ -124,7 +127,7 @@ export default function ContactUs(props) {
                     multiline
                     rows="6"
                     variant="outlined" />
-                    <Button className={classes.textFieldSize} type="submit" variant="contained" color="primary">send</Button>
+                    <Button className={classes.btn} type="submit" variant="contained" color="primary">send</Button>
                 </form>
                 
             </div>

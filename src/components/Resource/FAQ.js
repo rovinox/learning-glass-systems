@@ -21,13 +21,14 @@ export default function FAQ () {
     const classes = useStyles();
         return (
             <div className={classes.root}>
-            <ExpansionPanel>
+            <ExpansionPanel >
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
+                
               >
-                <Typography className={classes.heading}>How do I clean the glass?</Typography>
+                <Typography  className={classes.heading}>How do I clean the glass?</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Typography>

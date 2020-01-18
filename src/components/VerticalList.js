@@ -5,8 +5,26 @@ import Divider from '@material-ui/core/Divider';
 import MenuItem from "@material-ui/core/MenuItem"
 import Menu from "@material-ui/core/Menu"
 import Button from "@material-ui/core/Button"
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import color from '@material-ui/core/colors/amber';
+
+
+const useStyles = makeStyles({
+  domain:{
+   textAlign:"center",
+   marginBottom:"40px",
+   fontSize:"45px",
+   color:"teal",
+   textShadow:"2px 2px 4px",
+   fontFamily:"Impact, Charcoal, sans-serif"
+
+  }
+})
 
 export default function VerticalList (props) {
+
+  const classes = useStyles();
 
     const [studio, setStudio] = React.useState(null);
     const [lightbord, setLightboard] = React.useState(null);
@@ -35,6 +53,7 @@ export default function VerticalList (props) {
     
         return (
             <div>
+              <Typography className={classes.domain} >THE DOMAIN</Typography>
             <Divider />
                 <List>
                     <ListItem>
