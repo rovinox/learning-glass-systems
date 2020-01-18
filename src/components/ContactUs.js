@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import Card from "@material-ui/core/Card"
+import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 export default function ContactUs(props) {
   
     const classes = useStyles();
-    const [fullName, setFullName] = React.useState("")
+    const [name, setName] = React.useState("")
     const [email, setEmail] = React.useState("")
     const [message, setMessage] = React.useState("") 
     const [success , setSuccess ] = React.useState(false); 
@@ -69,7 +70,7 @@ export default function ContactUs(props) {
 
     const handleName = event => {
         const { name, value } = event.target;
-        setFullName({[name]: value });
+        setName({[name]: value });
     }
 
     const handleEmail = event => {
@@ -79,12 +80,13 @@ export default function ContactUs(props) {
 
     const submitInfo = (e) => {
         e.preventDefault()
-        if(!fullName|| !email || !message) {
+        if(!name|| !email || !message) {
           handleFail()
           
         } else {
           handleSuccess()
-          setTimeout(()=>{props.backToHome()},3000)
+          axios.post(`/api/email`,{name,message,email})
+          setTimeout(()=>{props.backToHome()},2000)
      }
   }   
     
