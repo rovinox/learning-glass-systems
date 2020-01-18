@@ -10,7 +10,8 @@ import './App.css';
 const theme = createMuiTheme({
   palette: {
     type: "dark",
-    primary: teal
+    primary: teal,
+  
   }
 });
 

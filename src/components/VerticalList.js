@@ -7,17 +7,19 @@ import Menu from "@material-ui/core/Menu"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import color from '@material-ui/core/colors/amber';
+
+
 
 
 const useStyles = makeStyles({
   domain:{
    textAlign:"center",
-   marginBottom:"40px",
+   marginBottom:"60px",
    fontSize:"45px",
    color:"teal",
    textShadow:"2px 2px 4px",
-   fontFamily:"Impact, Charcoal, sans-serif"
+   fontFamily:"Impact, Charcoal, sans-serif",
+   transform: "rotate(-45deg)",
 
   }
 })
@@ -29,6 +31,8 @@ export default function VerticalList (props) {
     const [studio, setStudio] = React.useState(null);
     const [lightbord, setLightboard] = React.useState(null);
     const [Accessories, setAccessories] = React.useState(null);
+
+    
 
     const handleStudioClick = event => {
         setStudio(event.currentTarget);
@@ -53,7 +57,7 @@ export default function VerticalList (props) {
     
         return (
             <div>
-              <Typography className={classes.domain} >THE DOMAIN</Typography>
+              <Typography className={classes.domain} >THEDOMAIN</Typography>
             <Divider />
                 <List>
                     <ListItem>
