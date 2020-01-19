@@ -30,6 +30,8 @@ import BlackMagic from "../components/Accessories/BlackMagic"
 import DracastLEDLight from "../components/Accessories/DracastLEDLight"
 import EraseMarkers from "../components/Accessories/EraseMarkers"
 import Decimator from "../components/Accessories/Decimator"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import teal from "@material-ui/core/colors/teal";
 
 function Copyright() {
   return (
@@ -43,6 +45,10 @@ function Copyright() {
     </Typography>
   );
 }
+
+
+
+
 
 const drawerWidth = 240;
 
@@ -90,10 +96,20 @@ const useStyles = makeStyles(theme => ({
 function ResponsiveDrawer(props) {
   const { container } = props;
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [page, setPage] = React.useState("home");
   const [resources, setResources] = React.useState(null);
+  const [changeTheme, setChangeTheme] = React.useState("light")
+
+  const theme = createMuiTheme({
+    palette: {
+      type:changeTheme,
+      primary: teal,
+      
+    
+    }
+  });
 
   const handleResourcesClick = event => {
     setResources(event.currentTarget);
@@ -165,6 +181,16 @@ function ResponsiveDrawer(props) {
     setPage("changeDecimatorPage")
    }
 
+   const handledarkTheme = () =>{
+      setChangeTheme("dark")
+   }
+
+   const handleLightTheme = () =>{
+    setChangeTheme("light")
+   }
+
+
+
 
   const drawer = (
     <div>
@@ -179,12 +205,17 @@ function ResponsiveDrawer(props) {
       changeDracastLEDLightPage={changeDracastLEDLightPage}
       changeEraseMarkersPage={changeEraseMarkersPage}
       changeDecimatorPage={changeDecimatorPage}
+      handledarkTheme={handledarkTheme}
+      handleLightTheme={handleLightTheme}
       />
+
     </div>
   );
 
   return (
-    <div className={classes.root}>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+        <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
@@ -275,6 +306,8 @@ function ResponsiveDrawer(props) {
           </Box>
       </main>
     </div>
+    </MuiThemeProvider>
+   
   );
 }
 

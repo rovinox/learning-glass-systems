@@ -7,12 +7,15 @@ import Menu from "@material-ui/core/Menu"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 
 
 
 const useStyles = makeStyles({
- 
+ buttonGroup:{
+   height:"64px"
+ }
 })
 
 export default function VerticalList (props) {
@@ -48,6 +51,10 @@ export default function VerticalList (props) {
     
         return (
             <div>
+              <ButtonGroup className={classes.buttonGroup} color="primary" variant="contained"  aria-label="outlined primary button group">
+                <Button onClick={props.handledarkTheme}>dark theme</Button>
+                <Button onClick={props.handleLightTheme}>light theme</Button>
+              </ButtonGroup>
             <Divider />
                 <List>
                     <ListItem>
