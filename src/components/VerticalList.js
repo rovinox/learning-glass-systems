@@ -12,16 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles({
-  domain:{
-   textAlign:"center",
-   marginBottom:"60px",
-   fontSize:"45px",
-   color:"teal",
-   textShadow:"2px 2px 4px",
-   fontFamily:"Impact, Charcoal, sans-serif",
-   transform: "rotate(-45deg)",
-
-  }
+ 
 })
 
 export default function VerticalList (props) {
@@ -57,7 +48,6 @@ export default function VerticalList (props) {
     
         return (
             <div>
-              <Typography className={classes.domain} >THEDOMAIN</Typography>
             <Divider />
                 <List>
                     <ListItem>

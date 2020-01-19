@@ -3,9 +3,7 @@ const nodemailer = require("nodemailer");
 
 module.exports = {
   addContactForm: (req, res) => {
-   console.log(req.body.name.name);
-   console.log(req.body.email.email);
-   console.log(req.body.message.message);
+  
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,

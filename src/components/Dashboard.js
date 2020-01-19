@@ -257,7 +257,7 @@ function ResponsiveDrawer(props) {
           {page === "home" ? <Home/> : null}
           {page === "tabletoplightboard" ? <TableTopLightboard /> : null}
           {page === "standalonelightboard" ? <StandAloneLightboard  />: null}
-        {page === "contactus" ? <ContactUs backToHome={backToHome} />: null}
+          {page === "contactus" ? <ContactUs backToHome={backToHome} />: null}
           {page === "howtoguide" ? <HowToGuide /> : null}
           {page === "faq" ? <FAQ /> : null}
           {page === "aboutus" ? <AboutUs /> : null}
