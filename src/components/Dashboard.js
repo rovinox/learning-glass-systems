@@ -80,6 +80,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
+    marginTop:"50px",
     padding: theme.spacing(3),
   },
   Resources: {
@@ -88,6 +89,13 @@ const useStyles = makeStyles(theme => ({
   },
   resourcesBackground:{
     backgroundColor:"teal"
+  },
+  divider:{
+  
+    width:"90%",
+    borderBottom:"1px teal solid",
+    marginTop:"40px"
+    
   }
 
   
@@ -300,7 +308,7 @@ function ResponsiveDrawer(props) {
           {page === "changeEraseMarkersPage" ? <EraseMarkers /> : null}
           {page === "changeDecimatorPage" ? <Decimator /> : null}
             
-          <Divider variant="middle" color="primary" />
+          <Divider className={classes.divider} variant="middle" />
           <Box pt={4}>
             <Copyright />
           </Box>

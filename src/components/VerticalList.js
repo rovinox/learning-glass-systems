@@ -15,7 +15,8 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 const useStyles = makeStyles({
  buttonGroup:{
    height:"64px"
- }
+ },
+ 
 })
 
 export default function VerticalList (props) {
